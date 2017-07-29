@@ -93,6 +93,21 @@ Calculator.prototype.parseF = function() {
   }
 }
 
+Calculator.prototype.returnString = function(currentNode){
+  var result = '';
+  if(!currentNode){
+    currentNode = this;
+  }
+  if(typeof currentNode === 'string'){
+    return console.log(result += currentNode);
+  } else if (Array.isArray(currentNode.children)){
+    return currentNode.children.forEach(this.returnString);
+  }
+}
+
+var calc = new Calculator('1+(2*3)');
+calc.returnString();
+
 // E = Expression
 // T = Term
 // F = Factor
