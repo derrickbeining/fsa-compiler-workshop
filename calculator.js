@@ -44,6 +44,11 @@ Calculator.prototype.get = function() {
   return this.tokenStream.shift();
 }
 
+Calculator.prototype.parseExpression = function() {
+  var a = parseA();
+  var t = parseTerm();
+  return new TreeNode('Expression', t, a);
+}
 
 
 const calc = new Calculator('1+(2*3)+4')
