@@ -2,6 +2,12 @@ function Calculator(input) {
   this.tokenStream = this.lexer(input);
 }
 
+function TreeNode(name, ...children) {
+  this.name = name;
+  this.children = children;
+
+}
+
 Calculator.prototype.lexer = function(str) {
   const stream = []
   const tokenTypes = [
@@ -30,4 +36,18 @@ Calculator.prototype.lexer = function(str) {
   return stream
 }
 
+Calculator.prototype.peek = function(currentIndex) {
+  return this.tokenStream[currentIndex + 1] || null;
+}
+
+Calculator.prototype.get = function() {
+  return this.tokenStream.shift();
+}
+
+
+
 const calc = new Calculator('1+(2*3)+4')
+var num = calc.get();
+var num2 = calc.get();
+console.log(num2);
+
